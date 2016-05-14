@@ -18,13 +18,13 @@ const int YY=600;
 int main()
 {
     gout.open(XX,YY);
-
+/*
     int cel=0;
     int i=1;
     string szo="Ide írj...";
     vector<widget*> w;
     vector<string> s={"1.elem","2.elem","3.elem","4.elem","5.elem","6.elem","7.elem","8.elem","9.elem","10.elem"};
-   /* dlist * dl1 = new dlist(10, 200, 200, 40, 4, s, i++);
+    dlist * dl1 = new dlist(10, 200, 200, 40, 4, s, i++);
     dlist * dl2 = new dlist(320, 200, 200, 40, 7, s, i++);
     funcbutton * fbt1 = new funcbutton(180,10,70,35,"Hozzáad",i++,[&](){
         dl1->add(dt1->get_text());
@@ -90,7 +90,7 @@ int main()
         if(cel!=0){
             w[cel-1]->rajzol(cel);
         }*/
-        //df
+        //dfja
         gout<< refresh;
     }
 	return 0;
