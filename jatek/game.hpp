@@ -12,7 +12,7 @@ protected:
     std::string cim;
     bool kilep;
 public:
-    game(int _XX, int _YY, std::string _cim);
+    game(int _XX, int _YY);
     void kilepes();
     void set_color(int _r, int _g, int _b);
     void run();

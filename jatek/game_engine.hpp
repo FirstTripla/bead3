@@ -13,7 +13,7 @@ protected:
     bool o_jon=false;  // ha true akkor a O rak, ha false akkor X rak
     void engine(int i, int j, funcbutton* me);
 public:
-    game_engine(int _XX, int _YY, std::string _cim, int n);
+    game_engine(int _XX, int _YY, int n);
 };
 
 #endif // GAME_ENGINE_HPP

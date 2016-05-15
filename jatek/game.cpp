@@ -6,7 +6,7 @@
 using namespace std;
 using namespace genv;
 
-game::game(int _XX, int _YY, std::string _cim) : XX(_XX),YY(_YY),cim(_cim){
+game::game(int _XX, int _YY) : XX(_XX),YY(_YY){
     kilep=false;
     R=0;
     G=0;
@@ -30,7 +30,7 @@ void game::hozzaad(widget* _w){
 
 void game::run(){
     gout.open(XX,YY);
-    gout.set_title(cim);
+    gout.set_title("Amõba játék");
     int cel=0;
     event ev;
     while(gin >> ev && kilep==false){

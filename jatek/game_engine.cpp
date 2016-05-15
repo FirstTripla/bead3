@@ -32,7 +32,7 @@ void game_engine::engine(int i, int j, funcbutton* me){
 
 }
 
-game_engine::game_engine(int _XX, int _YY, std::string _cim, int _n) : game(_XX, _YY,_cim){
+game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
     n=_n;
     int x=40;
     int y=40;
