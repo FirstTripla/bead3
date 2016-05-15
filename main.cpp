@@ -5,9 +5,9 @@
 #include <vector>
 #include <functional>
 
-#include "./widget/widget.hpp"
-#include "./widget/statictext.hpp"
-#include "./widget/gomb.hpp"
+#include "../widget/widget.hpp"
+#include "../widget/statictext.hpp"
+#include "../widget/gomb.hpp"
 
 using namespace std;
 using namespace genv;
