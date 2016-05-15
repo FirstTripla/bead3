@@ -1,5 +1,6 @@
 #ifndef WIDGET_HPP
 #define WIDGET_HPP
+#include "graphics.hpp"
 
 class widget{
 protected:

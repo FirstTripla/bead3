@@ -30,6 +30,14 @@ void funcbutton::rajzol(int cel){
 
 void funcbutton::muvelet(genv::event ev,int &cel){
     if(kijelolt(ev.pos_x, ev.pos_y) && ev.button==btn_left){
-        f();
+        f(this);
     }
+}
+
+void funcbutton::set_text(std::string szo){
+    felirat=szo;
+}
+
+std::string funcbutton::get_text(){
+    return felirat;
 }

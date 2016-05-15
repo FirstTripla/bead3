@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "../widget/widget.hpp"
+
 class game{
 private:
     int XX,YY;
@@ -15,7 +16,7 @@ public:
     void kilepes();
     void set_color(int _r, int _g, int _b);
     void run();
-    void addwidget(widget* _w);
+    void hozzaad(widget* _w);
 };
 
 #endif // GAME_HPP

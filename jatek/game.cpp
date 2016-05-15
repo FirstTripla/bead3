@@ -1,9 +1,8 @@
 #include "graphics.hpp"
-#include "../widget/widget.hpp"
 #include "../jatek/game.hpp"
 #include <vector>
 #include <iostream>
-
+#include "../widget/widget.hpp"
 using namespace std;
 using namespace genv;
 
@@ -12,6 +11,7 @@ game::game(int _XX, int _YY, std::string _cim) : XX(_XX),YY(_YY),cim(_cim){
     R=0;
     G=0;
     B=0;
+    w.clear();
 }
 
 void game::kilepes(){
@@ -24,7 +24,7 @@ void game::set_color(int _r, int _g, int _b){
     B=_b;
 }
 
-void game::addwidget(widget* _w){
+void game::hozzaad(widget* _w){
     w.push_back(_w);
 }
 
@@ -42,3 +42,4 @@ void game::run(){
         gout<<refresh;
     }
 }
+

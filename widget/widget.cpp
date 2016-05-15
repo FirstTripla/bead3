@@ -1,4 +1,3 @@
-#include "graphics.hpp"
 #include "widget.hpp"
 
 void widget::setrgb(int rr, int gg, int bb){
