@@ -24,6 +24,10 @@ void game_engine::engine(int i, int j, funcbutton* me){
                 ures++;
             }
         }
+        if(ures==0){
+            gover=true;
+            st1->set_text("Döntetlen, a pálya betelt.");
+        }
     }
 
 }

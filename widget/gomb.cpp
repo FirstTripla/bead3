@@ -30,18 +30,16 @@ void funcbutton::rajzol(int cel){
             << move_to(x+ax-2, y+2) << line(-ax+4, ay-4)<< move_to(x+ax-3, y+2) << line(-ax+4, ay-4);
     }
     else if(felirat=="O"){
-        r=(ax-4)/2;
+        r=9;
         for(int i=x; i<x+2*r;i++){
             for(int j=y; j<y+2*r;j++){
-                gout<< move_to(i,j);
                 int x0=i-(x+r);
                 int y0=j-(y+r);
                 if(x0*x0+y0*y0<=r*r){
-                    gout<< color(255,0,0)<< box(2,2);
+                    gout<< move_to(i,j)<<color(0,0,255)<<dot;
                 }
             }
         }
-
     }
     else{
         gout<<move_to(x-gout.twidth(felirat)/2+ax/2,y+ay/2+(gout.cascent()+gout.cdescent())/4)<<color(255,255,255)<<text(felirat);
