@@ -3,7 +3,7 @@
 #include "../widget/statictext.hpp"
 #include <iostream>
 
-void game_engine::engine(int i, int j, funcbutton* ez){
+void game_engine::engine(funcbutton* ez){
     std::string rakta="";
     if(gover==false){
         if(ez->get_text()=="" && x_jon==true){
@@ -39,20 +39,20 @@ void game_engine::engine(int i, int j, funcbutton* ez){
 
 game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
     n=_n;
-    int x=40;
+    int x=40;   //kezdo hely
     int y=40;
     int m=20; //meret
     for(int i=0;i<n;i++){
         for(int j=0; j<n;j++){
-            funcbutton* fb=new funcbutton(x+i*(m+2),y+j*(m+2),m,m,"",i+j,[i,j,this](funcbutton* ez){
-                        engine(i,j,ez);
+            funcbutton* fb=new funcbutton(x+i*(m+2),y+j*(m+2),m,m,"",i+j,[&](funcbutton* ez){
+                        engine(ez);
             });
             //fb->setrgb(200-(i+j)*2,i*5,j*6);
             fb->setrgb(100,100,100);
             hozzaad(fb);
         }
     }
-    funcbutton* exit=new funcbutton(XX-70,10,60,30,"Kilépés",1,[&](funcbutton* me){
+    funcbutton* exit=new funcbutton(XX-70,10,60,30,"Kilépés",1,[&](funcbutton* ez){
         kilepes();
     });
     exit->setrgb(0,0,220);

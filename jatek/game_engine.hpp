@@ -12,7 +12,7 @@ protected:
     bool gover=false; // ha valaki nyer vagy elfogy az üres mezõ akkor true lesz
     bool o_jon=false;
     bool x_jon=true;
-    void engine(int i, int j, funcbutton* me);
+    void engine(funcbutton* ez);
 public:
     game_engine(int _XX, int _YY, int n);
 };
