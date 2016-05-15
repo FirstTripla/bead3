@@ -5,7 +5,7 @@
 #include "../widget/widget.hpp"
 
 class game{
-private:
+protected:
     int XX,YY;
     int R,G,B;
     std::vector<widget *> w;

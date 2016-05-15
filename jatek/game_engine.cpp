@@ -1,12 +1,29 @@
-#include "../jatek/game_engine.hpp"
+#include "game_engine.hpp"
 #include "../widget/gomb.hpp"
 #include "../widget/statictext.hpp"
 #include <iostream>
 
 void game_engine::engine(int i, int j, funcbutton* me){
     if(gover==false){
-
-
+        std::string target="";
+        if(me->get_text()=="" && o_jon==false){
+            target="X";
+            me->set_text("X");
+            o_jon=!o_jon;
+            st1->set_text("A kék (O) játékos jön.");
+        }
+        else if(me->get_text()=="" && o_jon==true){
+            target="O";
+            me->set_text("O");
+            o_jon=!o_jon;
+            st1->set_text("A piros (X) játékos jön.");
+        }
+        int ures=0;
+        for(size_t i=0;i<n*n;i++){
+            if(((funcbutton*)w[i])->get_text()==""){
+                ures++;
+            }
+        }
     }
 
 }
@@ -20,15 +37,18 @@ game_engine::game_engine(int _XX, int _YY, std::string _cim, int _n) : game(_XX,
         for(int j=0; j<n;j++){
             funcbutton* fb=new funcbutton(x+i*(m+2),y+j*(m+2),m,m,"",i+j,[i,j,this](funcbutton* me){
                         engine(i,j,me);
-                        std::cout<<"lol"<<i<<std::endl;
             });
-            fb->setrgb(100-(i+j)*2,i*10,j*5);
+            //fb->setrgb(200-(i+j)*2,i*5,j*6);
+            fb->setrgb(100,100,100);
             hozzaad(fb);
-
-            std::cout << i+j<<std::endl;
         }
     }
-    st1 = new stext(250,10,400,20,"A piros (X) játékos kezd.",1);
+    funcbutton* exit=new funcbutton(XX-70,10,60,30,"Kilépés",1,[&](funcbutton* me){
+        kilepes();
+    });
+    exit->setrgb(0,0,220);
+    hozzaad(exit);
+    st1 = new stext(250,10,400,20,"A piros (X) játékos kezd.",2);
     st1->setrgb(200,200,0);
     hozzaad(st1);
 };
