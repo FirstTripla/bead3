@@ -25,7 +25,15 @@ void Gomb::set_text(std::string szo){
 
 void funcbutton::rajzol(int cel){
     gout<<move_to(x,y)<<color(r,g,b)<<box(ax,ay);
-    gout<<move_to(x-gout.twidth(felirat)/2+ax/2,y+ay/2+(gout.cascent()+gout.cdescent())/4)<<color(255,255,255)<<text(felirat);
+    if(felirat=="X"){
+       // gout<<
+    }
+    else if(felirat=="O"){
+
+    }
+    else{
+        gout<<move_to(x-gout.twidth(felirat)/2+ax/2,y+ay/2+(gout.cascent()+gout.cdescent())/4)<<color(255,255,255)<<text(felirat);
+    }
 }
 
 void funcbutton::muvelet(genv::event ev,int &cel){

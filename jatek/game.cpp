@@ -34,7 +34,7 @@ void game::run(){
     int cel=0;
     event ev;
     while(gin >> ev && ev.keycode != key_escape){
-        gout<<move_to(0,0)<<color(R,G,B)<<box(XX,YY);
+        //gout<<move_to(0,0)<<color(R,G,B)<<box(XX,YY);
         for(size_t i=0; i<w.size();i++){
             w[i]->muvelet(ev,cel);
             w[i]->rajzol(cel);

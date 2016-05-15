@@ -8,6 +8,8 @@
 class game_engine: public game{
 private:
     int n;
+    stext * st1;
+    bool gover=false; // ha valaki nyer vagy elfogy az üres mezõ akkor true lesz
     bool O_jon=false;  // ha true akkor a O rak, ha false akkor X rak
     void engine(int i, int j, funcbutton* me);
 public:

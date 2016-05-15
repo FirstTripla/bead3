@@ -1,23 +1,14 @@
 /// Halmai Levente RS7P1M ///
-#include "graphics.hpp"
-#include <fstream>
 #include <iostream>
-#include <vector>
-#include <functional>
-
-#include "../widget/widget.hpp"
-#include "../widget/statictext.hpp"
-#include "../widget/gomb.hpp"
+#include "../jatek/game_engine.hpp"
 
 using namespace std;
 using namespace genv;
 
-const int XX=800;
-const int YY=600;
-
 int main()
 {
-    gout.open(XX,YY);
+    game_engine amoba(900,650,"Best Amoba Ever",25);
+    amoba.run();
 /*
     int cel=0;
     int i=1;
@@ -71,13 +62,13 @@ int main()
     fbt1->setrgb(0,0,200);
     fbt2->setrgb(180,0,0);
     fbt3->setrgb(0,200,0);
-    */
+
 	event ev;
 
 	while(gin >> ev && ev.keycode != key_escape)
     {
         gout<<move_to(0,0)<<color(0,0,0)<<box(XX,YY);
-        /*if(ev.keycode == key_tab){
+        if(ev.keycode == key_tab){
             cel++;
             if((unsigned)cel>w.size()){
                 cel=0;
@@ -89,9 +80,8 @@ int main()
         }
         if(cel!=0){
             w[cel-1]->rajzol(cel);
-        }*/
-        //dfja
+        }
         gout<< refresh;
-    }
+    }*/
 	return 0;
 }
