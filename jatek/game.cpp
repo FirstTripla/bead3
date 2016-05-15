@@ -30,7 +30,7 @@ void game::hozzaad(widget* _w){
 
 void game::run(){
     gout.open(XX,YY);
-    gout.set_title("Amõba játék");
+    gout.set_title("Amoba jatek");
     int cel=0;
     event ev;
     while(gin >> ev && kilep==false){

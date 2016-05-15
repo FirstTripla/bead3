@@ -1,30 +1,35 @@
-#include "game_engine.hpp"
+#include "../jatek/game_engine.hpp"
 #include "../widget/gomb.hpp"
 #include "../widget/statictext.hpp"
 #include <iostream>
 
-void game_engine::engine(int i, int j, funcbutton* me){
+void game_engine::engine(int i, int j, funcbutton* ez){
+    std::string rakta="";
     if(gover==false){
-        std::string rakta="";
-        if(me->get_text()=="" && o_jon==false){
+        if(ez->get_text()=="" && x_jon==true){
             rakta="X";
-            me->set_text("X");
-            o_jon=!o_jon;
+            ez->set_text("X");
             st1->set_text("A kék (O) játékos jön.");
+            x_jon=false;
+            o_jon=true;
         }
-        else if(me->get_text()=="" && o_jon==true){
+        else if(ez->get_text()=="" && o_jon==true){
             rakta="O";
-            me->set_text("O");
-            o_jon=!o_jon;
+            ez->set_text("O");
             st1->set_text("A piros (X) játékos jön.");
+            o_jon=false;
+            x_jon=true;
         }
-        int ures=0;
-        for(size_t i=0;i<n*n;i++){
+        int ures=0; //szabad hely a
+        for(int i=0;i<n*n;i++){
             if(((funcbutton*)w[i])->get_text()==""){
                 ures++;
             }
         }
         if(ures==0){
+            rakta="";
+            x_jon=false;
+            o_jon=false;
             gover=true;
             st1->set_text("Döntetlen, a pálya betelt.");
         }
@@ -39,8 +44,8 @@ game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
     int m=20; //meret
     for(int i=0;i<n;i++){
         for(int j=0; j<n;j++){
-            funcbutton* fb=new funcbutton(x+i*(m+2),y+j*(m+2),m,m,"",i+j,[i,j,this](funcbutton* me){
-                        engine(i,j,me);
+            funcbutton* fb=new funcbutton(x+i*(m+2),y+j*(m+2),m,m,"",i+j,[i,j,this](funcbutton* ez){
+                        engine(i,j,ez);
             });
             //fb->setrgb(200-(i+j)*2,i*5,j*6);
             fb->setrgb(100,100,100);
