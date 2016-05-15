@@ -5,15 +5,15 @@
 
 void game_engine::engine(int i, int j, funcbutton* me){
     if(gover==false){
-        std::string target="";
+        std::string rakta="";
         if(me->get_text()=="" && o_jon==false){
-            target="X";
+            rakta="X";
             me->set_text("X");
             o_jon=!o_jon;
             st1->set_text("A kék (O) játékos jön.");
         }
         else if(me->get_text()=="" && o_jon==true){
-            target="O";
+            rakta="O";
             me->set_text("O");
             o_jon=!o_jon;
             st1->set_text("A piros (X) játékos jön.");
