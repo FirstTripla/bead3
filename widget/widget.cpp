@@ -7,5 +7,5 @@ void widget::setrgb(int rr, int gg, int bb){
 }
 
 bool widget::kijelolt(int posx, int posy){
-    return (posx <= x+ax && posx >= x) && (posy < y+ay && posy >= y);
+    return (posx < x+ax && posx >= x) && (posy < y+ay && posy >= y);
 }

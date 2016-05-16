@@ -3,7 +3,7 @@
 
 int main()
 {
-    game_engine amoba(800,600,30);
+    game_engine amoba(1000,600,30);
     amoba.run();
 	return 0;
 }
