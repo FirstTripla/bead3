@@ -41,11 +41,14 @@ void game_engine::engine(funcbutton* ez){
         tmp_atlo1.clear();
         tmp_atlo2.clear();
         int limit=5;
-        for(int k=0;k<n-4;k++){//oszlop elvileg
+        for(int k=0;k<n-4;k++){
             for(int l=0;l<n;l++){
                 for(int i=k;i<k+5;i++){
-                    if(((funcbutton*)w[i*n+l])->get_text()==rakta){
-                            tmp_oszlop.push_back(((funcbutton*)w[i*n+l]));
+                    if(((funcbutton*)w[i*n+l])->get_text()==rakta){//oszlop
+                        tmp_oszlop.push_back(((funcbutton*)w[i*n+l]));
+                    }
+                    if(((funcbutton*)w[i+l*n])->get_text()==rakta){//sor
+                        tmp_sor.push_back(((funcbutton*)w[i+l*n]));
                     }
                 }
                 if(tmp_oszlop.size()>=5){
@@ -55,6 +58,13 @@ void game_engine::engine(funcbutton* ez){
                     break;
                 }
                 tmp_oszlop.clear();
+                if(tmp_sor.size()>=5){
+                    gover=true;
+                    tmp_sor.clear();
+                    st1->set_text("A(z) "+rakta+" játékos nyert.");
+                    break;
+                }
+                tmp_sor.clear();
             }
         }
 
