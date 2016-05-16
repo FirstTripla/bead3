@@ -5,7 +5,7 @@
 #include "widget.hpp"
 
 class Gomb : public widget{
-private:
+protected:
     std::string felirat;
 public:
     Gomb(int x_,  int y_, int ax_, int ay_, std::string felirat_, int id_): widget(x_, y_, ax_, ay_, id_),felirat(felirat_){}
@@ -15,7 +15,7 @@ public:
 };
 
 class funcbutton : public widget{
-private:
+protected:
     std::string felirat;
     std::function<void(funcbutton*)> f;
 public:

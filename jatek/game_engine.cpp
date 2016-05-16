@@ -41,41 +41,65 @@ void game_engine::engine(funcbutton* ez){
         tmp_atlo1.clear();
         tmp_atlo2.clear();
         int limit=5;
-        for(int k=0;k<n-limit;k++){
-            for(int l=0;l<n-limit;l++){
-                //sor vizsgalat
-                for(int i=k;i<k+limit;i++){
+        for(int k=0;k<n-4;k++){//oszlop elvileg
+            for(int l=0;l<n;l++){
+                for(int i=k;i<k+5;i++){
                     if(((funcbutton*)w[i*n+l])->get_text()==rakta){
-                        tmp_sor.push_back(((funcbutton*)w[i*n+l]));
+                            tmp_oszlop.push_back(((funcbutton*)w[i*n+l]));
                     }
                 }
-                if(tmp_sor.size()>=limit){
-                    gover=true;
-                    tmp_sor.clear();
-                    st1->set_text("A(z) "+rakta+" játékos nyert.");
-                    break;
-                }
-                tmp_sor.clear();
-                //oszlop vizsgalat
-                for(int j=l;j<l+limit;j++){
-                    if(((funcbutton*)w[j+k*n])->get_text()==rakta){
-                        tmp_oszlop.push_back(((funcbutton*)w[j+k*n]));
-                    }
-                }
-                if(tmp_oszlop.size()>=limit){
+                if(tmp_oszlop.size()>=5){
                     gover=true;
                     tmp_oszlop.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
                 }
                 tmp_oszlop.clear();
+            }
+        }
+
+
+
+
+        /*for(int k=0;k<n-5;k++){
+            for(int l=0;l<n-5;l++){
+                //oszlop vizsgalat [i*n+l]
+                for(int i=k;i<k+5;i++){
+                    if(((funcbutton*)w[i+l*n])->get_text()==rakta){
+                        tmp_oszlop.push_back(((funcbutton*)w[i+l*n]));
+                    }
+                    //std::cout<<i+l*n<<" ";
+                }
+                if(tmp_oszlop.size()>=5){
+                    gover=true;
+                    tmp_oszlop.clear();
+                    st1->set_text("A(z) "+rakta+" játékos nyert.");
+                    break;
+                }
+                tmp_oszlop.clear();
+                //sor vizsgalat     [j+k*n]
+                for(int j=l;j<l+5;j++){
+                    if(((funcbutton*)w[j+k*n])->get_text()==rakta){
+                        tmp_sor.push_back(((funcbutton*)w[j+k*n]));
+                    }
+                                    std::cout<<j+k*n<<" ";
+
+                }
+                if(tmp_sor.size()>=5){
+                    gover=true;
+                    tmp_sor.clear();
+                    st1->set_text("A(z) "+rakta+" játékos nyert.");
+                    break;
+                }
+                tmp_sor.clear();
                 //atlo jobb le iranyba
-                for(int m1=0;m1<limit;m1++){
+                for(int m1=0;m1<5;m1++){
                     if(((funcbutton*)w[(k+m1)*n+l+m1])->get_text()==rakta){
                         tmp_atlo1.push_back(((funcbutton*)w[(k+m1)*n+l+m1]));
                     }
+                    //std::cout<<(k+m1)*n+l+m1<<" ";
                 }
-                if(tmp_atlo1.size()>=limit){
+                if(tmp_atlo1.size()>=5){
                     gover=true;
                     tmp_atlo1.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
@@ -83,21 +107,22 @@ void game_engine::engine(funcbutton* ez){
                 }
                 tmp_atlo1.clear();
                 //atlo jobb fel iranyba
-                for(int m2=0;m2<limit;m2++){
-                    if(((funcbutton*)w[(k+limit-1-m2)*n+l+m2])->get_text()==rakta){
-                        tmp_atlo2.push_back(((funcbutton*)w[(k+limit-1-m2)*n+l+m2]));
+                for(int m2=0;m2<5;m2++){
+                    if(((funcbutton*)w[(k+5-1-m2)*n+l+m2])->get_text()==rakta){
+                        tmp_atlo2.push_back(((funcbutton*)w[(k+5-1-m2)*n+l+m2]));
                     }
                 }
-                if(tmp_atlo2.size()>=limit){
+                if(tmp_atlo2.size()>=5l){
                     gover=true;
                     tmp_atlo2.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
                 }
                 tmp_atlo2.clear();
+                std::cout<<std::endl;
             }
-        }
-        std::cout<<rakta<<std::endl;
+            std::cout<<std::endl;
+        }*/
     }
 }
 
@@ -108,13 +133,15 @@ game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
     int m=20;  //meret
     for(int i=0;i<n;i++){
         for(int j=0; j<n;j++){
-            funcbutton* fb=new funcbutton(x+i*(m+1),y+j*(m+1),m,m," ",i+j,[&](funcbutton* ez)
+            funcbutton* fb=new funcbutton(x+j*(m+1),y+i*(m+1),m,m," ",i+j,[&](funcbutton* ez)
             {
                 engine(ez);
             });
             fb->setrgb(100,100,100);
             hozzaad(fb);
+            std::cout<<i*n+j<<" ";
         }
+        std::cout<<std::endl;
     }
     funcbutton* exit=new funcbutton(XX-70,10,60,30,"Exit",1,[&](funcbutton* ez)
     {
