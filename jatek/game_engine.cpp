@@ -41,9 +41,9 @@ void game_engine::engine(funcbutton* ez){
         tmp_atlo1.clear();
         tmp_atlo2.clear();
         int limit=5;
-        for(int k=0;k<n-4;k++){
+        for(int k=0;k<n-limit+1;k++){
             for(int l=0;l<n;l++){
-                for(int i=k;i<k+5;i++){
+                for(int i=k;i<k+limit;i++){
                     if(((funcbutton*)w[i*n+l])->get_text()==rakta){//oszlop
                         tmp_oszlop.push_back(((funcbutton*)w[i*n+l]));
                     }
@@ -51,14 +51,14 @@ void game_engine::engine(funcbutton* ez){
                         tmp_sor.push_back(((funcbutton*)w[i+l*n]));
                     }
                 }
-                if(tmp_oszlop.size()>=5){
+                if(tmp_oszlop.size()>=limit){
                     gover=true;
                     tmp_oszlop.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
                 }
                 tmp_oszlop.clear();
-                if(tmp_sor.size()>=5){
+                if(tmp_sor.size()>=limit){
                     gover=true;
                     tmp_sor.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
@@ -149,9 +149,7 @@ game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
             });
             fb->setrgb(100,100,100);
             hozzaad(fb);
-            std::cout<<i*n+j<<" ";
         }
-        std::cout<<std::endl;
     }
     funcbutton* exit=new funcbutton(XX-70,10,60,30,"Exit",1,[&](funcbutton* ez)
     {
