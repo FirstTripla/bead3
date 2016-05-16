@@ -65,9 +65,39 @@ void game_engine::engine(funcbutton* ez){
                     break;
                 }
                 tmp_sor.clear();
+
             }
         }
-
+        for(int k=0;k<n-limit+1;k++){
+            for(int l=0;l<n-limit+1;l++){
+                //atlo job le iranyba
+                for(int m=0;m<5;m++){
+                    if(((funcbutton*)w[(k+m)*n+l+m])->get_text()==rakta){
+                        tmp_atlo1.push_back(((funcbutton*)w[(k+m)*n+l+m]));
+                    }
+                    if(((funcbutton*)w[(k+limit-1-m)*n+l+m])->get_text()==rakta){
+                        tmp_atlo2.push_back(((funcbutton*)w[(k+limit-1-m)*n+l+m]));
+                    }
+                    std::cout<<(k+limit-1-m)*n+l+m<<" ";
+                }
+                if(tmp_atlo1.size()>=5){
+                    gover=true;
+                    tmp_atlo1.clear();
+                    st1->set_text("A(z) "+rakta+" játékos nyert.(atlo)");
+                    break;
+                }
+                tmp_atlo1.clear();
+                if(tmp_atlo2.size()>=5l){
+                    gover=true;
+                    tmp_atlo2.clear();
+                    st1->set_text("A(z) "+rakta+" játékos nyert.");
+                    break;
+                }
+                tmp_atlo2.clear();
+                std::cout<<std::endl;
+            }
+            std::cout<<std::endl;
+        }
 
 
 
@@ -149,7 +179,9 @@ game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
             });
             fb->setrgb(100,100,100);
             hozzaad(fb);
+            std::cout<<i<<j<<" ";
         }
+        std::cout<<std::endl;
     }
     funcbutton* exit=new funcbutton(XX-70,10,60,30,"Exit",1,[&](funcbutton* ez)
     {

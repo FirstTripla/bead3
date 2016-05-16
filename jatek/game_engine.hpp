@@ -8,6 +8,7 @@
 class game_engine: public game{
 protected:
     int n;
+    //std::string nyert()
     stext * st1;
     bool gover=false; // ha valaki nyer vagy elfogy az üres mezõ akkor true lesz
     bool o_jon=false;
