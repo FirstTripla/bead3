@@ -4,20 +4,26 @@
 #include <iostream>
 #include <vector>
 
+void nyero_szin(std::vector<funcbutton*>& fbt){
+    for(size_t i=0;i<fbt.size();i++){
+        fbt[i]->setrgb(200,200,200);
+    }
+}
+
 void game_engine::engine(funcbutton* ez){
     std::string rakta="";
     if(gover==false){
         if(ez->get_text()==" " && x_jon==true){
             rakta="X";
             ez->set_text("X");
-            st1->set_text("A kék (O) játékos jön.");
+            st1->set_text("A kék O játékos jön.");
             x_jon=false;
             o_jon=true;
         }
         else if(ez->get_text()==" " && o_jon==true){
             rakta="O";
             ez->set_text("O");
-            st1->set_text("A piros (X) játékos jön.");
+            st1->set_text("A piros X játékos jön.");
             o_jon=false;
             x_jon=true;
         }
@@ -32,6 +38,10 @@ void game_engine::engine(funcbutton* ez){
             gover=true;
             st1->set_text("Döntetlen, a pálya betelt.");
         }
+        bool tmp1=false;
+        bool tmp2=false;
+        bool tmp3=false;
+        bool tmp4=false;
         std::vector<funcbutton*> tmp_sor;
         std::vector<funcbutton*> tmp_oszlop;
         std::vector<funcbutton*> tmp_atlo1;
@@ -53,6 +63,7 @@ void game_engine::engine(funcbutton* ez){
                 }
                 if(tmp_oszlop.size()>=limit){
                     gover=true;
+                    nyero_szin(tmp_oszlop);
                     tmp_oszlop.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
@@ -60,6 +71,7 @@ void game_engine::engine(funcbutton* ez){
                 tmp_oszlop.clear();
                 if(tmp_sor.size()>=limit){
                     gover=true;
+                    nyero_szin(tmp_sor);
                     tmp_sor.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
@@ -67,8 +79,8 @@ void game_engine::engine(funcbutton* ez){
                 tmp_sor.clear();
 
             }
-        }
-        for(int k=0;k<n-limit+1;k++){
+        //}
+        //for(int k=0;k<n-limit+1;k++){
             for(int l=0;l<n-limit+1;l++){
                 //atlo job le iranyba
                 for(int m=0;m<5;m++){
@@ -82,16 +94,19 @@ void game_engine::engine(funcbutton* ez){
                 }
                 if(tmp_atlo1.size()>=5){
                     gover=true;
-                    for(int b=0;b<tmp_atlo1.size();b++){
-                        tmp_atlo1[b]->setrgb(200,0,200);
-                    }
+                    //std::cout<<tmp_atlo1.size();
+                    /*for(int b=0;b<tmp_atlo1.size();b++){
+                        tmp_atlo1[b]->setrgb(200,200,200);
+                    }*/
+                    nyero_szin(tmp_atlo1);
                     tmp_atlo1.clear();
-                    st1->set_text("A(z) "+rakta+" játékos nyert.(atlo)");
+                    st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
                 }
                 tmp_atlo1.clear();
-                if(tmp_atlo2.size()>=5l){
+                if(tmp_atlo2.size()>=5){
                     gover=true;
+                    nyero_szin(tmp_atlo2);
                     tmp_atlo2.clear();
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
@@ -191,15 +206,16 @@ game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
     exit->setrgb(0,0,220);
     hozzaad(exit);
 
-    st1 = new stext(250,10,400,20,"A piros (X) játékos kezd.",2);
+    st1 = new stext(250,10,400,20,"A piros X játékos kezd.",2);
     st1->setrgb(200,200,0);
     hozzaad(st1);
 
     funcbutton* rst=new funcbutton(XX-70,50,60,30,"Restart",3,[&](funcbutton* ez)
     {
-        st1->set_text("A piros (X) játékos kezd.");
+        st1->set_text("A piros X játékos kezd.");
         for(int i=0;i<n*n;i++){
             ((funcbutton*)w[i])->set_text(" ");
+            ((funcbutton*)w[i])->setrgb(100,100,100);
         }
         x_jon=true;
         o_jon=false;
