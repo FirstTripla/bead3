@@ -1,8 +1,9 @@
 #include "graphics.hpp"
 #include "../jatek/game.hpp"
+#include "../widget/widget.hpp"
 #include <vector>
 #include <iostream>
-#include "../widget/widget.hpp"
+
 using namespace std;
 using namespace genv;
 
@@ -35,6 +36,14 @@ void game::run(){
     event ev;
     while(gin >> ev && kilep==false){
         gout<<move_to(0,0)<<color(R,G,B)<<box(XX,YY);
+        /*for(size_t i=0;i<w.size();i++){
+            if(w[i]->kijelolt(ev.pos_x,ev.pos_y)){
+                w[i]->setrgb(150,150,150);
+            }
+            else if(((funcbutton*)w[i])->kijelolt(ev.pos_x,ev.pos_y)){
+                w[i]->setrgb(100,100,100);
+            }
+        }*/
         for(size_t i=0; i<w.size();i++){
             w[i]->muvelet(ev,cel);
             w[i]->rajzol(cel);

@@ -1,6 +1,6 @@
 #include "graphics.hpp"
 #include "gomb.hpp"
-
+#include <iostream>
 using namespace genv;
 using namespace std;
 
@@ -30,12 +30,12 @@ void funcbutton::rajzol(int cel){
             << move_to(x+ax-2, y+2) << line(-ax+4, ay-4)<< move_to(x+ax-3, y+2) << line(-ax+4, ay-4);
     }
     else if(felirat=="O"){
-        r=9;
-        for(int i=x; i<x+2*r;i++){
-            for(int j=y; j<y+2*r;j++){
-                int x0=i-(x+r);
-                int y0=j-(y+r);
-                if(x0*x0+y0*y0<=r*r){
+        int R=9;
+        for(int i=x; i<x+ax;i++){
+            for(int j=y; j<y+ay;j++){
+                int x0=i-(x+R);
+                int y0=j-(y+R);
+                if(x0*x0+y0*y0<R*R && x0*x0+y0*y0>(R-2)*(R-2)){
                     gout<< move_to(i,j)<<color(0,0,255)<<dot;
                 }
             }
