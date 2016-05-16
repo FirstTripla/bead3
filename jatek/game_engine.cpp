@@ -34,8 +34,12 @@ void game_engine::engine(funcbutton* ez){
         }
         std::vector<funcbutton*> tmp_sor;
         std::vector<funcbutton*> tmp_oszlop;
+        std::vector<funcbutton*> tmp_balle;
+        std::vector<funcbutton*> tmp_jobble;
         tmp_sor.clear();
         tmp_oszlop.clear();
+        tmp_balle.clear();
+        tmp_jobble.clear();
         for(int k=0;k<n-5;k++){
             for(int l=0;l<n-5;l++){
                 for(int i=k;i<k+5;i++){ //sor
@@ -43,17 +47,19 @@ void game_engine::engine(funcbutton* ez){
                         tmp_sor.push_back(((funcbutton*)w[i*n+l]));
                     }
                 }
-
-                for(int j=l;j<l+5;j++){ //oszlop
-                    if(((funcbutton*)w[j*n+k])->get_text()==rakta){
-                        tmp_sor.push_back(((funcbutton*)w[j*n+k]));
-                    }
-                }
                 if(tmp_sor.size()>=5){
+                    std::cout<<tmp_sor.size()<<std::endl;
                     gover=true;
                     tmp_sor.clear();
                     st1->set_text("A "+rakta+" játékos nyert.");
                     break;
+                }
+                tmp_sor.clear();
+
+                for(int j=l;j<l+5;j++){ //oszlop
+                    if(((funcbutton*)w[j+k*n])->get_text()==rakta){
+                        tmp_oszlop.push_back(((funcbutton*)w[j+k*n]));
+                    }
                 }
                 if(tmp_oszlop.size()>=5){
                     gover=true;
@@ -61,8 +67,21 @@ void game_engine::engine(funcbutton* ez){
                     st1->set_text("A(z) "+rakta+" játékos nyert.");
                     break;
                 }
-                tmp_sor.clear();
                 tmp_oszlop.clear();
+
+                for(int m=0;m<5;m++){
+                    if(((funcbutton*)w[(k+m)*n+(l+m)])->get_text()==rakta){
+                        tmp_balle.push_back(((funcbutton*)w[(k+m)*n+(l+m)]));
+                    }
+                }
+                if(tmp_balle.size()>=5){
+                    gover=true;
+                    tmp_balle.clear();
+                    st1->set_text("A(z) "+rakta+" játékos nyert.");
+                    break;
+                }
+                tmp_balle.clear();
+                //for(int n=0;)
             }
         }
     }
