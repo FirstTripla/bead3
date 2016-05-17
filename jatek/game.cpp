@@ -35,15 +35,7 @@ void game::run(){
     int cel=0;
     event ev;
     while(gin >> ev && kilep==false){
-        gout<<move_to(0,0)<<color(R,G,B)<<box(XX,YY);
-        /*for(size_t i=0;i<w.size();i++){
-            if(w[i]->kijelolt(ev.pos_x,ev.pos_y)){
-                w[i]->setrgb(150,150,150);
-            }
-            else if(((funcbutton*)w[i])->kijelolt(ev.pos_x,ev.pos_y)){
-                w[i]->setrgb(100,100,100);
-            }
-        }*/
+        //gout<<move_to(0,0)<<color(R,G,B)<<box(XX,YY);
         for(size_t i=0; i<w.size();i++){
             w[i]->muvelet(ev,cel);
             w[i]->rajzol(cel);
