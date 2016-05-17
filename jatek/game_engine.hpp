@@ -9,6 +9,7 @@ class game_engine: public game{
 protected:
     int n;
     stext * st1;
+    std::string mit=" "; //mit fog szinezni
     bool gover=false; // ha valaki nyer vagy elfogy az üres mezõ akkor true lesz
     bool o_jon=false;
     bool x_jon=true;
