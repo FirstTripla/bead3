@@ -1,8 +1,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <vector>
 #include "../widget/widget.hpp"
+#include <vector>
 
 class game{
 protected:

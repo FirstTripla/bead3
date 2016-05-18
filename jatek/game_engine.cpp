@@ -1,8 +1,4 @@
 #include "../jatek/game_engine.hpp"
-#include "../widget/gomb.hpp"
-#include "../widget/statictext.hpp"
-#include <iostream>
-#include <vector>
 
 void nyero_szin(std::vector<funcbutton*>& fbt){
     for(size_t i=0;i<fbt.size();i++){
@@ -151,5 +147,3 @@ game_engine::game_engine(int _XX, int _YY, int _n) : game(_XX, _YY){
     rst->setrgb(200,0,0);
     hozzaad(rst);
 };
-
-

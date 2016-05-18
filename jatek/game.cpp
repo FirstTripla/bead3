@@ -1,10 +1,6 @@
 #include "graphics.hpp"
 #include "../jatek/game.hpp"
-#include "../widget/widget.hpp"
-#include <vector>
-#include <iostream>
 
-using namespace std;
 using namespace genv;
 
 game::game(int _XX, int _YY) : XX(_XX),YY(_YY){
