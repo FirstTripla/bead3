@@ -24,8 +24,8 @@ void game_engine::engine(funcbutton* ez){
             o_jon=false;
             x_jon=true;
         }
-
-        int ures=0; //szabad hely a mezon
+        //szabad hely vizsgalata, ha nincs ures, akkor dontetlen menet.
+        int ures=0;
         for(int i=0;i<n*n;i++){
             if(((funcbutton*)w[i])->get_text()==" "){
                 ures++;
