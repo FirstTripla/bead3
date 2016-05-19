@@ -10,20 +10,21 @@ void nyero_szin(std::vector<funcbutton*>& fbt){
 void game_engine::engine(funcbutton* ez){
     std::string rakta="";
     if(gover==false){
-        if(ez->get_text()==" " && x_jon==true){
+        if(ez->get_text()==" " && x_jon==true){  // megnezzuk kinek kell raknia az adott gombot (X vagy O)
             rakta="X";
-            ez->set_text("X");
+            ez->set_text(rakta);
             st1->set_text("A kék O játékos jön.");
             x_jon=false;
             o_jon=true;
         }
         else if(ez->get_text()==" " && o_jon==true){
             rakta="O";
-            ez->set_text("O");
+            ez->set_text(rakta);
             st1->set_text("A piros X játékos jön.");
             o_jon=false;
             x_jon=true;
         }
+
         int ures=0; //szabad hely a mezon
         for(int i=0;i<n*n;i++){
             if(((funcbutton*)w[i])->get_text()==" "){
@@ -43,14 +44,17 @@ void game_engine::engine(funcbutton* ez){
         tmp_oszlop.clear();
         tmp_atlo1.clear();
         tmp_atlo2.clear();
-        int limit=5;
+        int limit=5; //Itt lehet megadni neki a határt, amitol nyerni lehet (3*3-as mezonel pl 3-ra allitva is tokeletes).
+
+        //Megvizsgaljuk kulonbozo iranyban, hogy nyert-e valaki.
+        //Ha igen, akkor ki is szinezi, de peldaul ha tobb iranyban is egyszerre jon ki a nyero szam, akkor mindig az oszlop/sor/atlo le/atlo fel iranyban szinez egyet, az elso nyero iranyban
         for(int k=0;k<n-limit+1;k++){
             for(int l=0;l<n;l++){
                 for(int i=k;i<k+limit;i++){
-                    if(((funcbutton*)w[i*n+l])->get_text()==rakta){//oszlop
+                    if(((funcbutton*)w[i*n+l])->get_text()==rakta){//oszlop vizsgalat
                         tmp_oszlop.push_back(((funcbutton*)w[i*n+l]));
                     }
-                    if(((funcbutton*)w[i+l*n])->get_text()==rakta){//sor
+                    if(((funcbutton*)w[i+l*n])->get_text()==rakta){//sor vizsgalat
                         tmp_sor.push_back(((funcbutton*)w[i+l*n]));
                     }
                 }
@@ -72,14 +76,13 @@ void game_engine::engine(funcbutton* ez){
                     break;
                 }
                 tmp_sor.clear();
-
             }
             for(int l=0;l<n-limit+1;l++){
-                for(int m=0;m<5;m++){
-                    if(((funcbutton*)w[(k+m)*n+l+m])->get_text()==rakta){//atlo jobb le iranyba
+                for(int m=0;m<limit;m++){
+                    if(((funcbutton*)w[(k+m)*n+l+m])->get_text()==rakta){//atlo jobb lefele iranyban vizsgalata
                         tmp_atlo1.push_back(((funcbutton*)w[(k+m)*n+l+m]));
                     }
-                    if(((funcbutton*)w[(k+limit-1-m)*n+l+m])->get_text()==rakta){//atlo jobb fel iranyba
+                    if(((funcbutton*)w[(k+limit-1-m)*n+l+m])->get_text()==rakta){//atlo jobb felfele iranyban vizsgalata
                         tmp_atlo2.push_back(((funcbutton*)w[(k+limit-1-m)*n+l+m]));
                     }
                 }

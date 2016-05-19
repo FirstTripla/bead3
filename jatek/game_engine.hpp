@@ -9,11 +9,11 @@ class game_engine: public game{
 protected:
     int n;
     stext * st1;
-    std::string mit=" "; //mit fog szinezni
-    bool gover=false; // ha valaki nyer vagy elfogy az üres mezõ akkor true lesz
-    bool o_jon=false;
+    std::string mit=" "; // mit fog szinezni, ha nyer az illeto, ha tobb mint 5 azonos van a nyero iranyban akkor mindet kiszinezi
+    bool gover=false;    // ha valaki nyer vagy elfogy az ures mezo akkor true lesz
+    bool o_jon=false;    // ki fog rakni
     bool x_jon=true;
-    void engine(funcbutton* ez);
+    void engine(funcbutton* ez); // minden lepesnel a gomb hivja meg
 public:
     game_engine(int _XX, int _YY, int n);
 };
